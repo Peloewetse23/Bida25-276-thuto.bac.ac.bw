@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Test Drive | Kalahari Audi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: #f4f4f4; padding-top: 50px;">
+
+    <div class="container text-center">
+        <h1 style="color: #e00000;">KALAHARI AUDI</h1>
+        <h2>Book a Test Drive</h2>
+        <p>Experience the thrill of Audi in Gaborone. Fill out the form below.</p>
+
+        <div class="form-container">
+            <form action="submit_success.html" method="GET">
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="e.g. John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicleType">Select Vehicle Type:</label>
+                    <select id="vehicleType" name="vehicleType" required>
+                        <option value="">-- Choose a Vehicle --</option>
+                        <option value="SUV">Audi RS Q8 (SUV)</option>
+                        <option value="SUV">Audi Q5 (SUV)</option>
+                        <option value="Sportback">Audi RS7 (Sportback)</option>
+                        <option value="Coupe">Audi RS5 (Coupé)</option>
+                        <option value="PreOwned">Approved Pre-Owned (Discuss in person)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="testDate">Preferred Date:</label>
+                    <input type="date" id="testDate" name="testDate" required>
+                </div>
+
+                <button type="submit" class="button">Submit Booking</button>
+                
+                <p style="margin-top: 20px;"><a href="showroom.html" style="color: #333; text-decoration: none;">&larr; Cancel and return to Showroom</a></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
