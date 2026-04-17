@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details | Kalahari Audi Botswana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">KALAHARI AUDI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="showroom.html">Showroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Audi Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5" id="car-details-container">
+        <div class="text-center py-5">
+            <div class="spinner-border text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Kalahari Audi Showroom. Gaborone, Botswana.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Copy your EXACT SAME 50-car array from showroom.html here.
+        // I am using a shortened version for the example.
+        const cars = [
+            { id: 1, model: "Audi RS Q8", year: 2026, price: "P2,550,000", type: "New", body: "SUV", engine: "4.0L V8", img: "img/rsq8.jpg" },
+            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" }
+            // ... Make sure all 50 cars are in this array ...
+        ];
+
+        // 2. Get the car ID from the URL (e.g., details.html?id=1)
+        const urlParams = new URLSearchParams(window.location.search);
+        const carId = parseInt(urlParams.get('id'));
+
+        // 3. Find the specific car in the array
+        const selectedCar = cars.find(car => car.id === carId);
+
+        // 4. Inject the HTML into the page
+        const container = document.getElementById('car-details-container');
+
+        if (selectedCar) {
+            container.innerHTML = `
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <img src="${selectedCar.img}" 
+                             alt="${selectedCar.year} ${selectedCar.model} specifications" 
+                             width="800" 
+                             height="500" 
+                             class="img-fluid rounded shadow-lg"
+                             style="object-fit: cover;">
+                    </div>
+
+                    <div class="col-lg-5">
+                        <span class="badge ${selectedCar.type === 'New' ? 'bg-danger' : 'bg-secondary'} mb-2 p-2 fs-6">${selectedCar.type}</span>
+                        <h1 class="display-5 fw-bold mb-3">${selectedCar.model}</h1>
+                        <h2 class="text-primary fw-bold mb-4">${selectedCar.price}</h2>
+                        
+                        <p class="text-muted mb-4">Experience premium German engineering tailored for the Botswana roads. This ${selectedCar.year} model offers unparalleled luxury and performance.</p>
+                        
+                        <div class="row g-3 mb-5 border-top border-bottom py-3">
+                            <div class="col-6">
+                                <h6 class="text-muted mb-0">Year</h6>
+                                <p class="fw-bold mb-0">${selectedCar.year}</p>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="text-muted mb-0">Body Style</h6>
+                                <p class="fw-bold mb-0">${selectedCar.body}</p>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="text-muted mb-0">Engine</h6>
+                                <p class="fw-bold mb-0">${selectedCar.engine}</p>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="text-muted mb-0">Location</h6>
+                                <p class="fw-bold mb-0">Gaborone Showroom</p>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <a href="contact.html?interest=${encodeURIComponent(selectedCar.model)}" class="btn btn-danger btn-lg rounded-0 fw-bold py-3">BOOK TEST DRIVE</a>
+                            <a href="showroom.html" class="btn btn-outline-dark btn-lg rounded-0 fw-bold py-3">BACK TO SHOWROOM</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Error handling if someone types a wrong URL
+            container.innerHTML = `
+                <div class="text-center py-5">
+                    <h2 class="display-4 fw-bold">Vehicle Not Found</h2>
+                    <p class="lead">Sorry, we couldn't find the details for this vehicle.</p>
+                    <a href="showroom.html" class="btn btn-dark mt-3">Return to Showroom</a>
+                </div>
+            `;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

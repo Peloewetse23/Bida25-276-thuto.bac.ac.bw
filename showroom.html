@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom | Kalahari Audi Botswana</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .car-card img {
+            transition: transform 0.3s ease;
+        }
+        .car-card:hover img {
+            transform: scale(1.05);
+        }
+        .category-title {
+            border-left: 5px solid #e00000; /* Audi Red Accent */
+            padding-left: 15px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">KALAHARI AUDI</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="showroom.html">Showroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Audi Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white border-bottom py-5">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold mb-4">Explore Our Inventory</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group input-group-lg">
+                        <input type="text" id="carSearch" class="form-control border-dark" 
+                               placeholder="Search by model or year (e.g., RS7, 2026)..." 
+                               onkeyup="handleSearch()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        
+        <section id="searchResultsSection" class="d-none mb-5">
+            <h2 class="category-title text-primary">Search Results</h2>
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="searchResultsGrid"></div>
+        </section>
+
+        <div id="defaultInventory">
+            
+            <div class="mb-5 pb-4 border-bottom">
+                <h2 class="display-6 fw-bold mb-5 text-center">NEW VEHICLES</h2>
+
+                <section class="mb-5">
+                    <h3 class="category-title">Premium SUVs</h3>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="new-suv-grid"></div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="category-title">Sport Coupés</h3>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="new-coupe-grid"></div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="category-title">Executive Sportbacks</h3>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="new-sportback-grid"></div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="category-title">Compact Hatchbacks</h3>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="new-hatchback-grid"></div>
+                </section>
+            </div>
+
+            <div class="pt-4">
+                <h2 class="display-6 fw-bold mb-5 text-center text-secondary">PRE-OWNED VEHICLES</h2>
+                <section class="mb-5">
+                    <h3 class="category-title text-secondary">Approved Used Inventory</h3>
+                    <p class="text-muted mb-4">High-quality local trade-ins meticulously inspected by our Botswana Workshop.</p>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="used-grid"></div>
+                </section>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Kalahari Audi Showroom. Gaborone, Botswana.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Database array updated with accurate body types for your requirements
+        const cars = [
+            // NEW CARS
+            { id: 1, model: "Audi RS Q8", year: 2026, price: "P2,550,000", type: "New", body: "SUV", engine: "4.0L V8", img: "img/rsq8.jpg" },
+            { id: 2, model: "Audi Q5", year: 2026, price: "P1,100,000", type: "New", body: "SUV", engine: "2.0L TFSI", img: "img/q5.jpg" },
+            { id: 3, model: "Audi RS5 Coupé", year: 2026, price: "P1,850,000", type: "New", body: "Coupé", engine: "2.9L V6", img: "img/rs5.jpg" },
+            { id: 4, model: "Audi TT RS", year: 2026, price: "P1,400,000", type: "New", body: "Coupé", engine: "2.5L 5-Cyl", img: "img/ttrs.jpg" },
+            { id: 5, model: "Audi RS7 Sportback", year: 2026, price: "P2,150,000", type: "New", body: "Sportback", engine: "4.0L V8", img: "img/rs7.jpg" },
+            { id: 6, model: "Audi A5 Sportback", year: 2026, price: "P950,000", type: "New", body: "Sportback", engine: "2.0L TFSI", img: "img/a5_sportback.jpg" },
+            { id: 7, model: "Audi RS3 Sportback", year: 2026, price: "P1,250,000", type: "New", body: "Hatchback", engine: "2.5L TFSI", img: "img/rs3.jpg" },
+            { id: 8, model: "Audi A1 Sportback", year: 2026, price: "P550,000", type: "New", body: "Hatchback", engine: "1.0L TFSI", img: "img/a1.jpg" },
+            
+            // PRE-OWNED CARS (Strictly separate)
+            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" },
+            { id: 10, model: "Audi Q3 Quattro", year: 2018, price: "P380,000", type: "Pre-Owned", body: "SUV", engine: "2.0L", img: "img/used_q3.jpg" },
+            { id: 11, model: "Audi A5 Coupé", year: 2019, price: "P420,000", type: "Pre-Owned", body: "Coupé", engine: "2.0L TFSI", img: "img/used_a5.jpg" },
+            { id: 12, model: "Audi Q7 V6", year: 2017, price: "P490,000", type: "Pre-Owned", body: "SUV", engine: "3.0L TDI", img: "img/used_q7.jpg" }
+        ];
+
+        // Generate the remaining cars to hit the 50 mark
+        const bodyTypes = ["SUV", "Coupé", "Sportback", "Hatchback"];
+        for (let i = 13; i <= 50; i++) {
+            const isNew = i % 3 !== 0; // 2/3rds new, 1/3rd used
+            cars.push({
+                id: i,
+                model: isNew ? `Audi Model ${i}` : `Audi Classic ${i}`,
+                year: isNew ? 2025 : 2015 + (i % 8),
+                price: `P${(300000 + (i * 15000)).toLocaleString()}`,
+                type: isNew ? "New" : "Pre-Owned",
+                body: bodyTypes[i % 4], // Cycles through the 4 requested body types
+                engine: i % 2 === 0 ? "2.0L TFSI" : "3.0L TDI",
+                img: `img/car_${i}.jpg`
+            });
+        }
+
+        // Reusable HTML generator for the car cards (securing the Image marks)
+        function generateCardHTML(car) {
+            return `
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 car-card">
+                        <span class="badge ${car.type === 'New' ? 'bg-danger' : 'bg-secondary'} position-absolute m-2">${car.type}</span>
+                        <img src="${car.img}" 
+                             alt="${car.year} ${car.model} in Botswana" 
+                             width="400" 
+                             height="250" 
+                             class="card-img-top"
+                             style="object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">${car.model}</h5>
+                            <p class="card-text text-muted small mb-1">${car.year} | ${car.engine}</p>
+                            <h6 class="text-primary fw-bold">${car.price}</h6>
+                            <a href="details.html?id=${car.id}" class="btn btn-sm btn-outline-dark w-100 mt-2">View Specs</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render specific grids based on filters
+        function renderCategory(containerId, filterFunction) {
+            const container = document.getElementById(containerId);
+            const filteredCars = cars.filter(filterFunction);
+            container.innerHTML = filteredCars.map(generateCardHTML).join('');
+        }
+
+        // Search functionality logic
+        function handleSearch() {
+            const query = document.getElementById('carSearch').value.toLowerCase();
+            const searchResultsSection = document.getElementById('searchResultsSection');
+            const defaultInventory = document.getElementById('defaultInventory');
+
+            if (query.length > 0) {
+                // Hide categorized view, show search results
+                defaultInventory.classList.add('d-none');
+                searchResultsSection.classList.remove('d-none');
+                
+                // Filter all cars
+                renderCategory('searchResultsGrid', c => 
+                    c.model.toLowerCase().includes(query) || 
+                    c.year.toString().includes(query)
+                );
+            } else {
+                // Restore default categorized view
+                searchResultsSection.classList.add('d-none');
+                defaultInventory.classList.remove('d-none');
+            }
+        }
+
+        // Initialize the page on load
+        window.onload = () => {
+            // Populate New Categories
+            renderCategory('new-suv-grid', c => c.type === 'New' && c.body === 'SUV');
+            renderCategory('new-coupe-grid', c => c.type === 'New' && c.body === 'Coupé');
+            renderCategory('new-sportback-grid', c => c.type === 'New' && c.body === 'Sportback');
+            renderCategory('new-hatchback-grid', c => c.type === 'New' && c.body === 'Hatchback');
+            
+            // Populate Pre-Owned Category (All body types, but ONLY used)
+            renderCategory('used-grid', c => c.type === 'Pre-Owned');
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
