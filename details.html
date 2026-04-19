@@ -42,22 +42,18 @@
     </footer>
 
     <script>
-        // 1. Copy your EXACT SAME 50-car array from showroom.html here.
-        // I am using a shortened version for the example.
+    
         const cars = [
             { id: 1, model: "Audi RS Q8", year: 2026, price: "P2,550,000", type: "New", body: "SUV", engine: "4.0L V8", img: "img/rsq8.jpg" },
             { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" }
-            // ... Make sure all 50 cars are in this array ...
-        ];
+            
+        ]
 
-        // 2. Get the car ID from the URL (e.g., details.html?id=1)
         const urlParams = new URLSearchParams(window.location.search);
         const carId = parseInt(urlParams.get('id'));
 
-        // 3. Find the specific car in the array
         const selectedCar = cars.find(car => car.id === carId);
 
-        // 4. Inject the HTML into the page
         const container = document.getElementById('car-details-container');
 
         if (selectedCar) {
@@ -106,7 +102,7 @@
                 </div>
             `;
         } else {
-            // Error handling if someone types a wrong URL
+        
             container.innerHTML = `
                 <div class="text-center py-5">
                     <h2 class="display-4 fw-bold">Vehicle Not Found</h2>
