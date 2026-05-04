@@ -26,8 +26,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">KALAHARI AUDI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+              <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="showroom.html">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link" href="service.html">Audi Service</a></li>
@@ -110,34 +113,21 @@
         
             { id: 1, model: "Audi RS Q8", year: 2026, price: "P2,550,000", type: "New", body: "SUV", engine: "4.0L V8", img: "img/rsq8.jpg" },
             { id: 2, model: "Audi Q5", year: 2026, price: "P1,100,000", type: "New", body: "SUV", engine: "2.0L TFSI", img: "img/q5.jpg" },
-            { id: 3, model: "Audi RS5 Coupé", year: 2026, price: "P1,850,000", type: "New", body: "Coupé", engine: "2.9L V6", img: "img/rs5.jpg" },
-            { id: 4, model: "Audi TT RS", year: 2026, price: "P1,400,000", type: "New", body: "Coupé", engine: "2.5L 5-Cyl", img: "img/ttrs.jpg" },
+            { id: 3, model: "Audi RS5 Coupé", year: 2026, price: "P1,850,000", type: "New", body: "Coupé", engine: "2.9L V6", img: "img/rs5.webp" },
+            { id: 4, model: "Audi TT RS", year: 2026, price: "P1,400,000", type: "New", body: "Coupé", engine: "2.5L 5-Cyl", img: "img/ttrs.webp" },
             { id: 5, model: "Audi RS7 Sportback", year: 2026, price: "P2,150,000", type: "New", body: "Sportback", engine: "4.0L V8", img: "img/rs7.jpg" },
-            { id: 6, model: "Audi A5 Sportback", year: 2026, price: "P950,000", type: "New", body: "Sportback", engine: "2.0L TFSI", img: "img/a5_sportback.jpg" },
-            { id: 7, model: "Audi RS3 Sportback", year: 2026, price: "P1,250,000", type: "New", body: "Hatchback", engine: "2.5L TFSI", img: "img/rs3.jpg" },
-            { id: 8, model: "Audi A1 Sportback", year: 2026, price: "P550,000", type: "New", body: "Hatchback", engine: "1.0L TFSI", img: "img/a1.jpg" },
+            { id: 6, model: "Audi A5 Sportback", year: 2026, price: "P950,000", type: "New", body: "Sportback", engine: "2.0L TFSI", img: "img/A5_sportback.jpg" },
+            { id: 7, model: "Audi RS3 Sportback", year: 2026, price: "P1,250,000", type: "New", body: "Sportback", engine: "2.5L TFSI", img: "img/RS3.AVIF" },
+            { id: 8, model: "Audi A1 Sportback", year: 2026, price: "P550,000", type: "New", body: "Hatchback", engine: "1.0L TFSI", img: "img/A1.jpg" },
             
-            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" },
+            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_A3 Hatchback.jpg" },
             { id: 10, model: "Audi Q3 Quattro", year: 2018, price: "P380,000", type: "Pre-Owned", body: "SUV", engine: "2.0L", img: "img/used_q3.jpg" },
-            { id: 11, model: "Audi A5 Coupé", year: 2019, price: "P420,000", type: "Pre-Owned", body: "Coupé", engine: "2.0L TFSI", img: "img/used_a5.jpg" },
-            { id: 12, model: "Audi Q7 V6", year: 2017, price: "P490,000", type: "Pre-Owned", body: "SUV", engine: "3.0L TDI", img: "img/used_q7.jpg" }
+            { id: 12, model: "Audi Q7 V6", year: 2017, price: "P490,000", type: "Pre-Owned", body: "SUV", engine: "3.0L TDI", img: "img/used_q7.jpg" },
+            { id: 14, model: "Audi A5 ", year: 2019, price: "P250,000", type: "Pre-Owned", body: "Coupé", engine: "2.0L ", img: "img/used_a5.jpg" },
+            { id: 15, model: "Audi SQ5 ", year: 2026, price: "P910,000", type: "New", body: "SUV", engine: "3.0L V6 ", img: "img/sq5.jpeg" },
+            { id: 16, model: "Audi E-Tron", year: 2026, price: "P550,000", type: "New", body: "Sportback", engine: "Electric", img: "img/E-tron.jpg" },
+          
         ];
-
-        
-        const bodyTypes = ["SUV", "Coupé", "Sportback", "Hatchback"];
-        for (let i = 13; i <= 50; i++) {
-            const isNew = i % 3 !== 0; 
-            cars.push({
-                id: i,
-                model: isNew ? `Audi Model ${i}` : `Audi Classic ${i}`,
-                year: isNew ? 2025 : 2015 + (i % 8),
-                price: `P${(300000 + (i * 15000)).toLocaleString()}`,
-                type: isNew ? "New" : "Pre-Owned",
-                body: bodyTypes[i % 4], 
-                engine: i % 2 === 0 ? "2.0L TFSI" : "3.0L TDI",
-                img: `img/car_${i}.jpg`
-            });
-        }
 
         
         function generateCardHTML(car) {

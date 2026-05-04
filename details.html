@@ -44,8 +44,29 @@
     <script>
     
         const cars = [
+             
             { id: 1, model: "Audi RS Q8", year: 2026, price: "P2,550,000", type: "New", body: "SUV", engine: "4.0L V8", img: "img/rsq8.jpg" },
-            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" }
+            { id: 2, model: "Audi Q5", year: 2026, price: "P1,100,000", type: "New", body: "SUV", engine: "2.0L TFSI", img: "img/q5.jpg" },
+            { id: 3, model: "Audi RS5 Coupé", year: 2026, price: "P1,850,000", type: "New", body: "Coupé", engine: "2.9L V6", img: "img/rs5.webp" },
+            { id: 4, model: "Audi TT RS", year: 2026, price: "P1,400,000", type: "New", body: "Coupé", engine: "2.5L 5-Cyl", img: "img/ttrs.webp" },
+            { id: 5, model: "Audi RS7 Sportback", year: 2026, price: "P2,150,000", type: "New", body: "Sportback", engine: "4.0L V8", img: "img/rs7.jpg" },
+            { id: 6, model: "Audi A5 Sportback", year: 2026, price: "P950,000", type: "New", body: "Sportback", engine: "2.0L TFSI", img: "img/A5_sportback.jpg" },
+            { id: 7, model: "Audi RS3 Sportback", year: 2026, price: "P1,250,000", type: "New", body: "Hatchback", engine: "2.5L TFSI", img: "img/rs3.jpg" },
+            { id: 8, model: "Audi A1 Sportback", year: 2026, price: "P550,000", type: "New", body: "Hatchback", engine: "1.0L TFSI", img: "img/a1.jpg" },
+            
+            { id: 9, model: "Audi A3 Hatchback", year: 2020, price: "P295,000", type: "Pre-Owned", body: "Hatchback", engine: "1.4L TFSI", img: "img/used_a3.jpg" },
+            { id: 10, model: "Audi Q3 Quattro", year: 2018, price: "P380,000", type: "Pre-Owned", body: "SUV", engine: "2.0L", img: "img/used_q3.jpg" },
+            { id: 11, model: "Audi A5 Coupé", year: 2019, price: "P420,000", type: "Pre-Owned", body: "Coupé", engine: "2.0L TFSI", img: "img/used_a5.jpg" },
+            { id: 12, model: "Audi Q7 V6", year: 2017, price: "P490,000", type: "Pre-Owned", body: "SUV", engine: "3.0L TDI", img: "img/used_q7.jpg" },
+            { id: 13, model: "Audi Q3 ", year: 2017, price: "P430,000", type: "Pre-Owned", body: "SUV", engine: "2.0L ", img: "img/used_q3.jpg" },
+            { id: 14, model: "Audi A5 ", year: 2019, price: "P250,000", type: "Pre-Owned", body: "Coupé", engine: "2.0L ", img: "img/used_a5.jpg" },
+            { id: 15, model: "Audi SQ5 ", year: 2026, price: "P910,000", type: "New", body: "SUV", engine: "3.0L V6 ", img: "img/sq5.jpeg" },
+            { id: 16, model: "Audi E-Tron", year: 2026, price: "P550,000", type: "New", body: "Sportback", engine: "Electric", img: "img/E-tron.jpg" },
+            { id: 14, model: "Audi A5 S line ", year: 2019, price: "P450,000", type: "New", body: "Sportback", engine: "2.0L Turbo charged ", img: "img/used_A5 S line.jpg" },
+            { id: 15, model: "Audi Q8", year: 2024, price: "P2,100,000", type: "New", body: "SUV", engine: "4.0L V6", img: "img/q8.jpg" },
+            { id: 16, model: "Audi Q7", year: 2024, price: "P1,100,000", type: "New", body: "SUV", engine: "4.0L V6", img: "img/q7.jpg" },
+        
+
             
         ]
 
@@ -95,8 +116,8 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <a href="contact.html?interest=${encodeURIComponent(selectedCar.model)}" class="btn btn-danger btn-lg rounded-0 fw-bold py-3">BOOK TEST DRIVE</a>
-                            <a href="showroom.html" class="btn btn-outline-dark btn-lg rounded-0 fw-bold py-3">BACK TO SHOWROOM</a>
+                            <a href="contact.html?interest=${encodeURIComponent(selectedCar.model)}" class="btn btn-danger btn-lg rounded-3 fw-bold py-3">BOOK TEST DRIVE</a>
+                            <a href="showroom.html" class="btn btn-outline-dark btn-lg rounded-3 fw-bold py-3">BACK TO SHOWROOM</a>
                         </div>
                     </div>
                 </div>
